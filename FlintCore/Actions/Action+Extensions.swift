@@ -8,26 +8,6 @@
 
 import Foundation
 
-public protocol UIAction: Action {
-}
-
-public extension UIAction {
-    /// By default the dispatch queue that all actions are called on is `main`.
-    /// They will be called synchronously if the caller is already on the same queue, and asynchronously
-    /// only if the caller is not already on the same queue.
-    ///
-    /// - see: `ActionSession.callerQueue` because that determines which queue the action can be performed from,
-    /// and the session will prevent calls from other queues. This does not have to be the same as the Action's queue.
-    static var queue: DispatchQueue {
-        return .main
-    }
-
-
-    static var defaultSession: ActionSession? {
-        return ActionSession.main
-    }
-}
-
 /// Default implementation of the action requirements, to ease the out-of-box experience.
 public extension Action {
 
